@@ -1,0 +1,49 @@
+syntax = "proto3";
+package com.github.rerost.python_with_grpc_gateway;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+service RecommendService {
+  rpc ListUsers(google.protobuf.Empty) returns (ListUsersResponse) {
+    option (google.api.http) = {
+      get: "/users",
+    };
+  }
+  rpc ListBlogs(google.protobuf.Empty) returns (ListBlogsResponse) {
+    option (google.api.http) = {
+      get: "/blogs",
+    };
+  }
+}
+
+message User {
+  int64 id = 1;
+  double score = 2;
+  ScoreDescription score_description = 3;
+}
+
+message ListUsersResponse {
+  repeated User users = 1;
+}
+
+message Blog {
+  int64 id = 1;
+  double score = 2;
+  ScoreDescription score_description = 3;
+}
+
+message ListBlogsResponse {
+  repeated Blog blogs = 1;
+}
+message Score {
+  string name = 1;
+  double score = 2;
+  string score_func = 3;
+}
+
+message ScoreDescription {
+  repeated Score scores = 1;
+  string score_func = 2;
+}
+

@@ -4,8 +4,8 @@ from concurrent import futures
 import time
 import logging
 
-import recommend_pb2_grpc as recommend_pb2_grpc
-import recommend_pb2 as recommend_pb2 
+import api.recommend_pb2_grpc as recommend_pb2_grpc
+import api.recommend_pb2 as recommend_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 

@@ -1,6 +1,5 @@
 # ----- protoc
 PROTO_DIR := ./api/protos
-PROTO_FILES := $(shell ls ${PROTO_DIR} | grep -e ".*\.proto")
 PROTO_OUT_DIR := ./api
 PROTO_PATH := /usr/local/include
 
@@ -17,13 +16,13 @@ protoc:
 		${GATEWAY_FLAGS} \
 		--python_out=${PROTO_OUT_DIR} \
 		--grpc_python_out=${PROTO_OUT_DIR} \
-		${PROTO_FILES}
+		${PROTO_DIR}/*.proto
 	sed -i.bak 's/^\(import.*_pb2\)/from . \1/' ${PROTO_OUT_DIR}/*pb2*.py 
 	rm ${PROTO_OUT_DIR}/*.py.bak
 
 	# ----- for gateway
 	protoc $(GATEWAY_FLAGS) \
-	-I=${PROTO_DIR} \
-	--go_out=plugins=grpc:${GATEWAY_OUT_DIR} \
-	--grpc-gateway_out=logtostderr=true:${GATEWAY_OUT_DIR} \
-	${PROTO_FILES}
+		-I=${PROTO_DIR} \
+		--go_out=plugins=grpc:${GATEWAY_OUT_DIR} \
+		--grpc-gateway_out=logtostderr=true:${GATEWAY_OUT_DIR} \
+		${PROTO_DIR}/*.proto

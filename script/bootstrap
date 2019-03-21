@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -eu
+set -o pipefail
+
+OS=linux # When osx, set `osx`
+DEPENDENCIES=("go direnv pipenv")
+
+PROTOC_VERSION=3.3.0
+PROTOC_ZIP=protoc-${PROTOC_VERSION}-${OS}-x86_64.zip
+
+
+check() {
+  errcount=0
+  for d in ${DEPENDENCIES[@]}; do
+    if ! ( test $(which ${d}) )
+    then
+      echo "Please install ${d}"
+      (( errcount++ ))
+    fi
+  done
+  if [ $errcount -gt 0 ]; then
+    exit 1
+  fi
+}
+
+setup() {
+  [ -f .env ] || cp .env{.sample,}
+  direnv allow
+}
+
+setup_protoc() {
+  curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/${PROTOC_ZIP}
+  sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc include/\*
+  rm -f $PROTOC_ZIP
+
+  pipenv install
+
+  go get -u -v github.com/golang/protobuf/protoc-gen-go
+  go get -u -v google.golang.org/grpc
+  go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+}
+
+main() {
+  check
+  setup
+  setup_protoc
+}
+
+main

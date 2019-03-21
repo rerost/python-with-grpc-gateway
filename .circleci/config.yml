@@ -21,11 +21,25 @@ jobs:
       - run: docker pull rerost/python-with-grpc-gateway:`git rev-parse HEAD`
       - run: docker tag rerost/python-with-grpc-gateway:`git rev-parse HEAD` rerost/python-with-grpc-gateway:latest
       - run: docker push rerost/python-with-grpc-gateway:latest
+  check_bootstrap:
+    docker:
+      - image: circleci/golang:1.12
+    working_directory: /go/src/github.com/rerost/python-with-grpc-gateway
+    steps:
+      - checkout
+      - run: go get github.com/direnv/direnv
+      - run: eval "$(direnv hook bash)"
+      - run: sudo apt-get update && sudo apt-get install -y python3
+      - run: curl https://raw.githubusercontent.com/kennethreitz/pipenv/master/get-pipenv.py | sudo python3
+      - run: pipenv --python $(which python3)
+      - run: script/bootstrap
+      - run: make protoc
 
 workflows:
   version: 2
   build_and_test:
     jobs:
+      - check_bootstrap
       - build:
           context: docker push
       - release:

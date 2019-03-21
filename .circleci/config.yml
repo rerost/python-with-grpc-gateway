@@ -30,7 +30,7 @@ jobs:
       - run: go get github.com/direnv/direnv
       - run: eval "$(direnv hook bash)"
       - run: sudo apt-get update && sudo apt-get install -y python3
-      - run: curl https://raw.githubusercontent.com/kennethreitz/pipenv/master/get-pipenv.py | python
+      - run: curl https://raw.githubusercontent.com/kennethreitz/pipenv/master/get-pipenv.py | sudo python3
       - run: script/bootstrap
       - run: make protoc
 

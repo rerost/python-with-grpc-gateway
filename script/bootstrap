@@ -3,8 +3,8 @@
 set -eu
 set -o pipefail
 
-OS=osx # When linux, set `linux`
-DEPENDENCIES=("go direnv")
+OS=linux # When osx, set `osx`
+DEPENDENCIES=("go direnv pipenv")
 
 PROTOC_VERSION=3.3.0
 PROTOC_ZIP=protoc-${PROTOC_VERSION}-${OS}-x86_64.zip

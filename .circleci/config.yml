@@ -21,6 +21,15 @@ jobs:
       - run: docker pull rerost/python-with-grpc-gateway:`git rev-parse HEAD`
       - run: docker tag rerost/python-with-grpc-gateway:`git rev-parse HEAD` rerost/python-with-grpc-gateway:latest
       - run: docker push rerost/python-with-grpc-gateway:latest
+  check_bootstrap:
+    docker:
+      - image: circleci/golang:1.12
+    working_directory: /go/src/github.com/rerost/python-with-grpc-gateway
+      - checkout
+      - setup_remote_docker
+      - run: go get github.com/direnv/direnv
+      - run: eval "$(direnv hook bash)"
+      - run: script/bootstrap
 
 workflows:
   version: 2

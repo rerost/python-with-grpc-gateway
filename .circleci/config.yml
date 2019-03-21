@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7.2
+    working_directory: /go/src/github.com/rerost/python-with-grpc-gateway
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker build -t rerost/python-with-grpc-gateway:`git rev-parse HEAD` .
+      - run: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+      - run: docker push rerost/python-with-grpc-gateway:`git rev-parse HEAD`
+  release:
+    docker:
+      - image: circleci/python:3.7.2
+    working_directory: /go/src/github.com/rerost/python-with-grpc-gateway
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+      - run: docker pull rerost/python-with-grpc-gateway:`git rev-parse HEAD`
+      - run: docker tag rerost/python-with-grpc-gateway:`git rev-parse HEAD` rerost/python-with-grpc-gateway:latest
+      - run: docker push rerost/python-with-grpc-gateway:latest
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
+          context: docker push
+      - release:
+          requires:
+            - build
+          context: docker push
+          filters:
+            branches:
+              only: master

@@ -20,11 +20,6 @@ class RecommendServiceStub(object):
         request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
         response_deserializer=recommend__pb2.ListUsersResponse.FromString,
         )
-    self.ListBlogs = channel.unary_unary(
-        '/com.github.rerost.python_with_grpc_gateway.RecommendService/ListBlogs',
-        request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-        response_deserializer=recommend__pb2.ListBlogsResponse.FromString,
-        )
 
 
 class RecommendServiceServicer(object):
@@ -38,13 +33,6 @@ class RecommendServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def ListBlogs(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
 
 def add_RecommendServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -52,11 +40,6 @@ def add_RecommendServiceServicer_to_server(servicer, server):
           servicer.ListUsers,
           request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
           response_serializer=recommend__pb2.ListUsersResponse.SerializeToString,
-      ),
-      'ListBlogs': grpc.unary_unary_rpc_method_handler(
-          servicer.ListBlogs,
-          request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-          response_serializer=recommend__pb2.ListBlogsResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

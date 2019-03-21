@@ -4,7 +4,7 @@ PROTO_FILES := $(shell ls ${PROTO_DIR} | grep -e ".*\.proto")
 PROTO_OUT_DIR := ./
 PROTO_PATH := /usr/local/include
 GATEWAY_FLAGS := -I. -I/usr/local/include -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis -I/usr/local/include
-GATEWAY_OUT_DIR := ./api/
+GATEWAY_OUT_DIR := ./gateway/api
 
 .PHONY: protoc
 protoc:

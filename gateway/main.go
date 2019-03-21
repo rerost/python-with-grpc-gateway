@@ -3,9 +3,10 @@ package main
 import (
 	"context"
 	"flag"
+	"log"
 	"net/http"
+	"os"
 
-	"github.com/golang/glog"
 	"github.com/gorilla/handlers"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	gw "github.com/rerost/python-with-grpc-gateway/api"
@@ -13,10 +14,13 @@ import (
 )
 
 var (
-	echoEndpoint = flag.String("recommend_service", "localhost:5000", "recommend service")
+	target   = os.Getenv("GATEWAY_TARGET")
+	selfPort = os.Getenv("GATEWAY_PORT")
 )
 
 func run() error {
+	echoEndpoint := flag.String("recommend_service", target, "recommend service")
+
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
@@ -34,14 +38,13 @@ func run() error {
 		return err
 	}
 
-	return http.ListenAndServe(":3000", newMux)
+	return http.ListenAndServe(":"+selfPort, newMux)
 }
 
 func main() {
-	flag.Parse()
-	defer glog.Flush()
+	log.Printf("Starting gateway %v. target is %v\n", selfPort, target)
 
 	if err := run(); err != nil {
-		glog.Fatal(err)
+		log.Fatal(err)
 	}
 }

@@ -10,11 +10,6 @@ service RecommendService {
       get: "/users",
     };
   }
-  rpc ListBlogs(google.protobuf.Empty) returns (ListBlogsResponse) {
-    option (google.api.http) = {
-      get: "/blogs",
-    };
-  }
 }
 
 message User {
@@ -27,15 +22,6 @@ message ListUsersResponse {
   repeated User users = 1;
 }
 
-message Blog {
-  int64 id = 1;
-  double score = 2;
-  ScoreDescription score_description = 3;
-}
-
-message ListBlogsResponse {
-  repeated Blog blogs = 1;
-}
 message Score {
   string name = 1;
   double score = 2;

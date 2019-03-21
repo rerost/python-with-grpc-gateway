@@ -1,11 +1,5 @@
-build: depend
-	go build -o bin/gateway main.go
-
-setup:
-	go get github.com/golang/dep/cmd/dep
-
-depend: setup
-	dep ensure
+build:
+	go build -o bin/gateway  main.go
 
 clear:
 	rm bin/*

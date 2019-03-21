@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='com.github.rerost.python_with_grpc_gateway',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0frecommend.proto\x12*com.github.rerost.python_with_grpc_gateway\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"z\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x03\x12\r\n\x05score\x18\x02 \x01(\x01\x12W\n\x11score_description\x18\x03 \x01(\x0b\x32<.com.github.rerost.python_with_grpc_gateway.ScoreDescription\"T\n\x11ListUsersResponse\x12?\n\x05users\x18\x01 \x03(\x0b\x32\x30.com.github.rerost.python_with_grpc_gateway.User\"z\n\x04\x42log\x12\n\n\x02id\x18\x01 \x01(\x03\x12\r\n\x05score\x18\x02 \x01(\x01\x12W\n\x11score_description\x18\x03 \x01(\x0b\x32<.com.github.rerost.python_with_grpc_gateway.ScoreDescription\"T\n\x11ListBlogsResponse\x12?\n\x05\x62logs\x18\x01 \x03(\x0b\x32\x30.com.github.rerost.python_with_grpc_gateway.Blog\"8\n\x05Score\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x01\x12\x12\n\nscore_func\x18\x03 \x01(\t\"i\n\x10ScoreDescription\x12\x41\n\x06scores\x18\x01 \x03(\x0b\x32\x31.com.github.rerost.python_with_grpc_gateway.Score\x12\x12\n\nscore_func\x18\x02 \x01(\t2\xfa\x01\n\x10RecommendService\x12r\n\tListUsers\x12\x16.google.protobuf.Empty\x1a=.com.github.rerost.python_with_grpc_gateway.ListUsersResponse\"\x0e\x82\xd3\xe4\x93\x02\x08\x12\x06/users\x12r\n\tListBlogs\x12\x16.google.protobuf.Empty\x1a=.com.github.rerost.python_with_grpc_gateway.ListBlogsResponse\"\x0e\x82\xd3\xe4\x93\x02\x08\x12\x06/blogsb\x06proto3')
+  serialized_pb=_b('\n\x0frecommend.proto\x12*com.github.rerost.python_with_grpc_gateway\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"z\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x03\x12\r\n\x05score\x18\x02 \x01(\x01\x12W\n\x11score_description\x18\x03 \x01(\x0b\x32<.com.github.rerost.python_with_grpc_gateway.ScoreDescription\"T\n\x11ListUsersResponse\x12?\n\x05users\x18\x01 \x03(\x0b\x32\x30.com.github.rerost.python_with_grpc_gateway.User\"8\n\x05Score\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x01\x12\x12\n\nscore_func\x18\x03 \x01(\t\"i\n\x10ScoreDescription\x12\x41\n\x06scores\x18\x01 \x03(\x0b\x32\x31.com.github.rerost.python_with_grpc_gateway.Score\x12\x12\n\nscore_func\x18\x02 \x01(\t2\x86\x01\n\x10RecommendService\x12r\n\tListUsers\x12\x16.google.protobuf.Empty\x1a=.com.github.rerost.python_with_grpc_gateway.ListUsersResponse\"\x0e\x82\xd3\xe4\x93\x02\x08\x12\x06/usersb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -104,82 +104,6 @@ _LISTUSERSRESPONSE = _descriptor.Descriptor(
 )
 
 
-_BLOG = _descriptor.Descriptor(
-  name='Blog',
-  full_name='com.github.rerost.python_with_grpc_gateway.Blog',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='id', full_name='com.github.rerost.python_with_grpc_gateway.Blog.id', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='score', full_name='com.github.rerost.python_with_grpc_gateway.Blog.score', index=1,
-      number=2, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='score_description', full_name='com.github.rerost.python_with_grpc_gateway.Blog.score_description', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=332,
-  serialized_end=454,
-)
-
-
-_LISTBLOGSRESPONSE = _descriptor.Descriptor(
-  name='ListBlogsResponse',
-  full_name='com.github.rerost.python_with_grpc_gateway.ListBlogsResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='blogs', full_name='com.github.rerost.python_with_grpc_gateway.ListBlogsResponse.blogs', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=456,
-  serialized_end=540,
-)
-
-
 _SCORE = _descriptor.Descriptor(
   name='Score',
   full_name='com.github.rerost.python_with_grpc_gateway.Score',
@@ -220,8 +144,8 @@ _SCORE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=542,
-  serialized_end=598,
+  serialized_start=332,
+  serialized_end=388,
 )
 
 
@@ -258,19 +182,15 @@ _SCOREDESCRIPTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=600,
-  serialized_end=705,
+  serialized_start=390,
+  serialized_end=495,
 )
 
 _USER.fields_by_name['score_description'].message_type = _SCOREDESCRIPTION
 _LISTUSERSRESPONSE.fields_by_name['users'].message_type = _USER
-_BLOG.fields_by_name['score_description'].message_type = _SCOREDESCRIPTION
-_LISTBLOGSRESPONSE.fields_by_name['blogs'].message_type = _BLOG
 _SCOREDESCRIPTION.fields_by_name['scores'].message_type = _SCORE
 DESCRIPTOR.message_types_by_name['User'] = _USER
 DESCRIPTOR.message_types_by_name['ListUsersResponse'] = _LISTUSERSRESPONSE
-DESCRIPTOR.message_types_by_name['Blog'] = _BLOG
-DESCRIPTOR.message_types_by_name['ListBlogsResponse'] = _LISTBLOGSRESPONSE
 DESCRIPTOR.message_types_by_name['Score'] = _SCORE
 DESCRIPTOR.message_types_by_name['ScoreDescription'] = _SCOREDESCRIPTION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -288,20 +208,6 @@ ListUsersResponse = _reflection.GeneratedProtocolMessageType('ListUsersResponse'
   # @@protoc_insertion_point(class_scope:com.github.rerost.python_with_grpc_gateway.ListUsersResponse)
   ))
 _sym_db.RegisterMessage(ListUsersResponse)
-
-Blog = _reflection.GeneratedProtocolMessageType('Blog', (_message.Message,), dict(
-  DESCRIPTOR = _BLOG,
-  __module__ = 'recommend_pb2'
-  # @@protoc_insertion_point(class_scope:com.github.rerost.python_with_grpc_gateway.Blog)
-  ))
-_sym_db.RegisterMessage(Blog)
-
-ListBlogsResponse = _reflection.GeneratedProtocolMessageType('ListBlogsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _LISTBLOGSRESPONSE,
-  __module__ = 'recommend_pb2'
-  # @@protoc_insertion_point(class_scope:com.github.rerost.python_with_grpc_gateway.ListBlogsResponse)
-  ))
-_sym_db.RegisterMessage(ListBlogsResponse)
 
 Score = _reflection.GeneratedProtocolMessageType('Score', (_message.Message,), dict(
   DESCRIPTOR = _SCORE,
@@ -325,8 +231,8 @@ _RECOMMENDSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=708,
-  serialized_end=958,
+  serialized_start=498,
+  serialized_end=632,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListUsers',
@@ -336,15 +242,6 @@ _RECOMMENDSERVICE = _descriptor.ServiceDescriptor(
     input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
     output_type=_LISTUSERSRESPONSE,
     serialized_options=_b('\202\323\344\223\002\010\022\006/users'),
-  ),
-  _descriptor.MethodDescriptor(
-    name='ListBlogs',
-    full_name='com.github.rerost.python_with_grpc_gateway.RecommendService.ListBlogs',
-    index=1,
-    containing_service=None,
-    input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    output_type=_LISTBLOGSRESPONSE,
-    serialized_options=_b('\202\323\344\223\002\010\022\006/blogs'),
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_RECOMMENDSERVICE)

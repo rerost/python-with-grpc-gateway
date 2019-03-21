@@ -31,7 +31,7 @@ setup() {
 
 setup_protoc() {
   curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/${PROTOC_ZIP}
-  sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc include/
+  sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc include/\*
   rm -f $PROTOC_ZIP
 
   pipenv install

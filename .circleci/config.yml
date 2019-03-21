@@ -27,10 +27,9 @@ jobs:
     working_directory: /go/src/github.com/rerost/python-with-grpc-gateway
     steps:
       - checkout
-      - setup_remote_docker
       - run: go get github.com/direnv/direnv
       - run: eval "$(direnv hook bash)"
-      - run: apt-get install python3
+      - run: apt-get update && apt-get install -y python3
       - run: curl https://raw.githubusercontent.com/kennethreitz/pipenv/master/get-pipenv.py | python
       - run: script/bootstrap
       - run: make protoc

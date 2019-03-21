@@ -31,4 +31,4 @@ RUN pipenv install
 COPY . .
 COPY --from=gateway /gateway /usr/local/bin/gateway
 
-CMD ["python", "server.py"]
+CMD ["pipenv", "run", "start"]

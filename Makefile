@@ -18,7 +18,7 @@ protoc:
 		--python_out=${PROTO_OUT_DIR} \
 		--grpc_python_out=${PROTO_OUT_DIR} \
 		${PROTO_FILES}
-	sed -i '.bak' 's/^\(import.*_pb2\)/from . \1/' ${PROTO_OUT_DIR}/*pb2*.py 
+	sed -i.bak 's/^\(import.*_pb2\)/from . \1/' ${PROTO_OUT_DIR}/*pb2*.py 
 	rm ${PROTO_OUT_DIR}/*.py.bak
 
 	# ----- for gateway

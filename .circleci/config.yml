@@ -31,7 +31,7 @@ jobs:
       - run: eval "$(direnv hook bash)"
       - run: sudo apt-get update && sudo apt-get install -y python3
       - run: curl https://raw.githubusercontent.com/kennethreitz/pipenv/master/get-pipenv.py | sudo python3
-      - run: pipenv --python $(which python)
+      - run: pipenv --python $(which python3)
       - run: script/bootstrap
       - run: make protoc
 
